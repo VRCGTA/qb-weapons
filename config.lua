@@ -152,6 +152,17 @@ Config.DurabilityMultiplier = {
     weapon_fireextinguisher      = 0.15,
     weapon_hazardcan             = 0.15,
     weapon_fertilizercan         = 0.15,
+
+    -- Airsoft
+    weapon_airsoftglock20             = 0.15,
+    weapon_airsoftak47      = 0.15,
+    weapon_airsoftm4      = 0.15,
+    weapon_airsoftm249             = 0.15,
+    weapon_airsoftg36c         = 0.15,
+    weapon_airsoftmp5             = 0.15,
+    weapon_airsoftmicrouzi      = 0.15,
+    weapon_airsoftr700             = 0.15,
+    weapon_airsoftr870         = 0.15,
 }
 
 Config.WeaponRepairPoints = {
@@ -164,7 +175,7 @@ Config.WeaponRepairCosts = {
     mg = 4000,
     rifle = 5000,
     sniper = 7000,
-    shotgun = 6000
+    shotgun = 6000,
 }
 
 WeaponAttachments = {
