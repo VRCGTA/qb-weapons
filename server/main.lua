@@ -228,6 +228,10 @@ QBCore.Functions.CreateUseableItem('emp_ammo', function(source, item)
     TriggerClientEvent('weapons:client:AddAmmo', source, 'AMMO_EMPLAUNCHER', 10, item)
 end)
 
+QBCore.Functions.CreateUseableItem('rpg_ammo', function(source, item)
+    TriggerClientEvent('weapons:client:AddAmmo', source, 'AMMO_RPG', 1, item)
+end)
+
 -- TINTS
 
 local function GetWeaponSlotByName(items, weaponName)
