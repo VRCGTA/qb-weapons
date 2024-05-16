@@ -318,6 +318,19 @@ local function DoesWeaponTakeWeaponComponent(item, weaponName)
     return false
 end
 
+function dump(o)
+    if type(o) == 'table' then
+       local s = '{ '
+       for k,v in pairs(o) do
+          if type(k) ~= 'number' then k = '"'..k..'"' end
+          s = s .. '['..k..'] = ' .. dump(v) .. ','
+       end
+       return s .. '} '
+    else
+       return tostring(o)
+    end
+end
+
 local function EquipWeaponAttachment(src, item)
     local shouldRemove = false
     local ped = GetPlayerPed(src)
@@ -342,6 +355,9 @@ local function EquipWeaponAttachment(src, item)
     else
         weaponSlot.info.attachments[#weaponSlot.info.attachments + 1] = {
             component = attachmentComponent,
+            item = item,
+            label = QBCore.Shared.Items[item].label,
+            image = QBCore.Shared.Items[item].image,
         }
         GiveWeaponComponentToPed(ped, selectedWeaponHash, attachmentComponent)
         shouldRemove = true
@@ -360,11 +376,17 @@ for attachmentItem in pairs(WeaponAttachments) do
     end)
 end
 
+
+
 QBCore.Functions.CreateCallback('weapons:server:RemoveAttachment', function(source, cb, AttachmentData, WeaponData)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local Inventory = Player.PlayerData.items
     local allAttachments = WeaponAttachments
+    print("AttachmentData")
+    print(dump(AttachmentData))
+    print("WeaponData")
+    print(dump(WeaponData))
     local AttachmentComponent = allAttachments[AttachmentData.attachment][WeaponData.name]
 
     if Inventory[WeaponData.slot] then
